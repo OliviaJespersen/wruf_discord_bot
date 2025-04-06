@@ -8,7 +8,7 @@ from config import GEMINI_PROMPT
 from utils import image
 
 
-load_dotenv()
+load_dotenv(override=True)
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
     
 class AnalysisSchema(BaseModel):

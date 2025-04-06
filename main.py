@@ -8,7 +8,7 @@ from utils import system, layout, image
 
 system.log(2, "Starting bot")
 
-load_dotenv()
+load_dotenv(override=True)
 
 intents = discord.Intents.default()
 #intents.members = True

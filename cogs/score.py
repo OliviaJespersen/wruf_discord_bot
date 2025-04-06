@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from utils import database, layout
 
 
-load_dotenv()
+load_dotenv(override=True)
 
 class Score(commands.Cog):
     def __init__(self, bot):
