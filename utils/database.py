@@ -3,7 +3,7 @@ import redis.asyncio as redis
 
 # Setup
 
-r = redis.Redis(host='redis-stack', port=6379, decode_responses=True)
+r = redis.Redis(host='redis-database', port=6379, decode_responses=True)
 
 
 # Score Management

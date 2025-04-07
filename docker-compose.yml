@@ -10,11 +10,11 @@ services:
     restart: always
 
   redis:
-    image: redis/redis-stack:latest
-    container_name: redis-stack
+    image: redis:7.4-alpine3.21
+    container_name: redis-database
     restart: always
     ports:
-      - "8001:8001"
+      - "6379:6379"
     volumes:
       - redis-data:/data
 
