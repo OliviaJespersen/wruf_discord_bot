@@ -1,6 +1,7 @@
 services:
   bot:
     build: .
+    image: discord-bot:latest
     container_name: discord-bot
     env_file:
       - .env
