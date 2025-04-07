@@ -1,0 +1,21 @@
+services:
+  bot:
+    build: .
+    container_name: discord-bot
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    restart: always
+
+  redis:
+    image: redis/redis-stack:latest
+    container_name: redis-stack
+    restart: always
+    ports:
+      - "8001:8001"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:
