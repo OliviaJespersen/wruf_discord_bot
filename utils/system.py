@@ -1,5 +1,6 @@
 from functools import wraps
 import inspect
+import logging
 from datetime import datetime
 import asyncio
 
@@ -7,6 +8,10 @@ from config import ICON_SET
 import utils
 
 _dynamic_indent = 0
+logging.basicConfig(format='%(asctime)s | %(message)s', level=logging.INFO, datefmt='%H:%M:%S')
+logging.getLogger('discord').setLevel(logging.ERROR)
+logging.getLogger('google_genai').setLevel(logging.ERROR)
+logging.getLogger('httpx').setLevel(logging.ERROR)
 
 def reset_dynamic_indent():
     """
@@ -76,17 +81,13 @@ def log(code: int, message: str, indent: int = 0) -> None:
         message (str): The message to log.
         indent (int, optional): The indentation level for the log message. Defaults to 0.
     """
-    match code:
-        case 0:
-            icon = ICON_SET[0]
-        case 1:
-            icon = ICON_SET[1]
-        case 2:
-            icon = ICON_SET[2]
-        case 3:
-            icon = ICON_SET[3]
-
-    print(f"{time()} | {"    " * indent}{icon} {message}")
+    message = f"{"    " * indent}{ICON_SET[code]}  {message}"
+    if code == 0 or code == 2:
+        logging.info(message)
+    elif code == 1:
+        logging.warning(message)
+    elif code == 3:
+        logging.error(message)
 
 def time() -> str:
     """
