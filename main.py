@@ -29,7 +29,6 @@ async def on_ready():
     image.create_session()
     
     system.log(0, f"{bot.user} is running")
-    print(f"\n{"-" * 20} {system.time()} {"-" * 20}\n")
 
 @bot.event
 async def on_application_command(ctx: discord.ApplicationContext):
